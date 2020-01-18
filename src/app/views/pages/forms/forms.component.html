@@ -1,0 +1,50 @@
+<!--begin::Body-->
+<div class="kt-login__body col-md-4 offset-md-3" >
+	<!--begin::Signin-->
+	<div class="kt-login__form">
+		<div class="kt-login__title">
+			<h3>Upload File</h3>
+		</div>
+		<form [formGroup] = "uploadForm" (ngSubmit)="onSubmit()"> 
+			<div class="form-group">
+				<label>File Name</label>
+				<input type="text" placeholder="File Name"  formControlName="fileName"  class="form-control" />
+				<div *ngIf="isControlHasError('fileName','required')">
+                    <strong class='error'>fileName is required</strong>
+                </div> 
+                    <div *ngIf="isControlHasError('fileName','minlength')">
+                    <strong class='error'>Minimum Required length is 3</strong>
+                </div>
+                    <div *ngIf="isControlHasError('fileName','maxlength')">
+                    <strong class='error'>Maximum length of this field is 100</strong>
+                </div>
+			</div>
+
+			<div class="form-group">
+				<label>Access Token</label>
+				<input type="text" placeholder="accessToken" formControlName="accessToken" class="form-control" />
+				<div *ngIf="isControlHasError('accessToken','required')">
+                    <strong class='error'>Access token is Required</strong>
+                </div>
+                <div *ngIf="isControlHasError('accessToken','minlength')">
+                    <strong class='error'>Minimum Required length is 3</strong>
+                </div> 
+                <div *ngIf="isControlHasError('accessToken','maxlength')">
+                    <strong class='error'>Maximum length of this field is 100</strong>
+                </div>
+			  </div>     
+			<div>
+			  <input type="file" name="subscriberIds" (change)="onFileSelect($event)" />
+			  <div *ngIf="isControlHasError('file','required')">
+				<strong class='error'>A csv file is required</strong>
+			</div>
+			<div *ngIf="error">
+				<strong class='error'>Please Choose a CSV file</strong>
+			</div> 
+			</div>
+			<div class="form-group" style="margin-top: 4%; margin-left: 10%;">
+			  <button type="submit" [disabled]="!uploadForm.valid" class="btn btn-info kt-btn">Upload</button>
+			</div>
+		  </form>
+	</div>
+</div>

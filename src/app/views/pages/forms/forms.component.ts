@@ -1,0 +1,71 @@
+
+// Angular
+import { Component } from '@angular/core';
+import {  FormGroup,FormControl, Validators,FormBuilder} from '@angular/forms';
+//
+import { CommonClass } from './../../../commonUrl/common-url'
+import { HttpClient } from '@angular/common/http'
+@Component({
+  selector: 'kt-forms',
+  templateUrl: './forms.component.html',
+  styleUrls: ['./forms.component.scss']
+})
+export class FormsComponent  {
+  error:boolean=false;
+	constructor(private http: HttpClient,private formBuilder:FormBuilder) { }
+	URL=CommonClass.commonUrl;
+	uploadForm: FormGroup;  
+	ngOnInit() {
+		this.uploadForm = this.formBuilder.group({
+			subscriberIds:new FormControl('',[
+				Validators.required
+			]),
+		  fileName: new FormControl('',[
+			Validators.required,
+				Validators.minLength(3),
+				Validators.maxLength(100)
+		]),
+		accessToken:new FormControl('',[
+			Validators.required,
+			Validators.minLength(3),
+			Validators.maxLength(100)
+		]),
+		});
+	  }
+	  onFileSelect(event) {
+		if (event.target.files.length > 0) {
+		  const file = event.target.files[0];
+		  this.uploadForm.get('subscriberIds').setValue(file);
+		  const extension = file.name.split('.')[1].toLowerCase();
+			if (extension.toLowerCase() !== 'csv') {
+				this.uploadForm.controls['subscriberIds'].setErrors({'incorrect': true});
+				this.error=true;
+			}
+			else{
+				this.error=false;
+			}
+		}
+	  }
+	  onSubmit() {
+		const formData = new FormData();
+		formData.append('subscriberIds', this.uploadForm.get('subscriberIds').value);
+		formData.append('fileName', this.uploadForm.get('fileName').value);
+		formData.append('accessToken', this.uploadForm.get('accessToken').value);
+		this.http.post(this.URL+'/files/upload',formData)
+		.subscribe(
+			res => console.log(res)
+		);
+	  }
+	//validator function which genrates the error 
+	isControlHasError(controlName: string, validationType: string): boolean {
+		const control = this.uploadForm.controls[controlName];
+		if (!control) {
+			return false;
+		}
+
+		const result = control.hasError(validationType) && (control.dirty || control.touched);
+		return result;
+	}
+
+
+}
