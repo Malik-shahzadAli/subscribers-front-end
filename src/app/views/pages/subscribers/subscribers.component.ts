@@ -38,12 +38,14 @@ export class SubscribersComponent implements OnInit {
     console.log(this.URL+'/subscribers/export/csv/'+this.id)
     this.http.get(this.URL+'/subscribers/export/csv/'+this.id)
     .subscribe(
-      res=>console.log(res)
+      (res:string)=>{
+        console.log(res)
+        window.open(this.URL+res, "_blank");
+      }
+
     )
    }
    exportAsJSON(){
-    // console.log('json calling')
-    // subscribers/export/json/
     console.log(this.URL+'/subscribers/export/json/'+this.id);
     this.http.get(this.URL+'/subscribers/export/json/'+this.id)
     .subscribe(
