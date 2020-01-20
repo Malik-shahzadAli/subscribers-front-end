@@ -36,8 +36,8 @@ export class AppComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnInit(): void {
-		// let token=localStorage.getItem('token')
-		// if(token){
+		 let token=localStorage.getItem('token')
+		 if(token){
 			this.loader = this.layoutConfigService.getConfig('loader.enabled');
 			//call validate function and pass the found token for verification
 			const routerSubscription = this.router.events.subscribe(event => {
@@ -57,24 +57,24 @@ export class AppComponent implements OnInit, OnDestroy {
 			this.unsubscribe.push(routerSubscription);
 			 
 			
-		// }
+		 }
 
-		// else{
+		 else{
 		// 	// window.location.href='https://account.manytools.io/'
 		// 	// this.loader = this.layoutConfigService.getConfig('loader.enabled');
-		// 	setTimeout(() => {
-		// 		let iframe = document.getElementsByTagName('iframe')[0];
-		// 		let win;
-		// 		try {
-		// 			console.log('**** POST A MESSAGE ****')
-		// 			win = iframe.contentWindow;
-		// 			win.postMessage("Child Data", "https://69e7fdea.ngrok.io");
-		// 		} catch(e) {
-		// 			win = iframe.contentWindow;
-		// 			console.log(e)
-		// 		}
-		// 	}, 6000);
-		// }
+			setTimeout(() => {
+				let iframe = document.getElementsByTagName('iframe')[0];
+				let win;
+				try {
+					console.log('**** POST A MESSAGE ****')
+					win = iframe.contentWindow;
+					win.postMessage("Child Data", "https://account.manytools.io");
+				} catch(e) {
+					win = iframe.contentWindow;
+					console.log(e)
+				}
+			}, 6000);
+		 }
 
 	}
 	ngOnDestroy() {
