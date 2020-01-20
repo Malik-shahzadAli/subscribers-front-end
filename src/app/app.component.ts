@@ -81,16 +81,16 @@ export class AppComponent implements OnInit, OnDestroy {
 		this.unsubscribe.forEach(sb => sb.unsubscribe());
 	}
 	// PLEASE UNCOMMENT AFTER DELETE AND UPDATE
-	// @HostListener('window:message', ['$event'])
-	// onMessage(e) {
-	//   if (e.origin != "https://69e7fdea.ngrok.io") {
-	// 	return false;
-	//   }
-	//   if(e.data && (e.data.length > 0) && (e.data != undefined)){
-	// 	console.log("After Checks : ",e.data);
-	//     again call validation function
-	//   }
-	// }
+	@HostListener('window:message', ['$event'])
+	onMessage(e) {
+	  if (e.origin != "https://account.manytools.io") {
+		return false;
+	  }
+	  if(e.data && (e.data.length > 0) && (e.data != undefined)){
+		console.log("After Checks : ",e.data);
+	    // again call validation function
+	  }
+	}
 	validateToken(token){
 		//token found and send a request for validation
 
