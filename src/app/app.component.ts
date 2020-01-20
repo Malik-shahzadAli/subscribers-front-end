@@ -39,23 +39,11 @@ export class AppComponent implements OnInit, OnDestroy {
 		// let token=localStorage.getItem('token')
 		// if(token){
 			this.loader = this.layoutConfigService.getConfig('loader.enabled');
+			//call validate function and pass the found token for verification
 			 
-			const routerSubscription = this.router.events.subscribe(event => {
-				if (event instanceof NavigationEnd) {
-					// hide splash screen
-					this.splashScreenService.hide();
-	
-					// scroll to top on every route change
-					window.scrollTo(0, 0);
-	
-					// to display back the body content
-					setTimeout(() => {
-						document.body.classList.add('kt-page--loaded');
-					}, 500);
-				}
-			});
-			this.unsubscribe.push(routerSubscription);
+			
 		// }
+
 		// else{
 		// 	// window.location.href='https://account.manytools.io/'
 		// 	// this.loader = this.layoutConfigService.getConfig('loader.enabled');
@@ -85,7 +73,32 @@ export class AppComponent implements OnInit, OnDestroy {
 	//   }
 	//   if(e.data && (e.data.length > 0) && (e.data != undefined)){
 	// 	console.log("After Checks : ",e.data);
+	//     again call validation function
 	//   }
 	// }
+	validateToken(token){
+		//token found and send a request for validation
+
+		//if validate run this code 
+
+		// const routerSubscription = this.router.events.subscribe(event => {
+		// 	if (event instanceof NavigationEnd) {
+		// 		// hide splash screen
+		// 		this.splashScreenService.hide();
+
+		// 		// scroll to top on every route change
+		// 		window.scrollTo(0, 0);
+
+		// 		// to display back the body content
+		// 		setTimeout(() => {
+		// 			document.body.classList.add('kt-page--loaded');
+		// 		}, 500);
+		// 	}
+		// });
+		// this.unsubscribe.push(routerSubscription);
+
+
+		//else send back to manytool.io
+	}
 	
 }
