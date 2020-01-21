@@ -80,7 +80,8 @@ export class AppComponent implements OnInit, OnDestroy {
 		  
 		  if(e.data != null){
 			console.log("After Checks : ",e.data);
-			 this.validateToken(e.data)
+			let data:String=e.data;
+			 this.validateToken(data)
 		  }
 		  //if found null from the accounts.manytools.io
 		  else{
@@ -93,6 +94,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
 
 	validateToken(token){
+		console.log(token)
 		const newToken=`Bearer ${token}`
 		const options = {
 			headers: new HttpHeaders().append('Authorization',newToken ),
