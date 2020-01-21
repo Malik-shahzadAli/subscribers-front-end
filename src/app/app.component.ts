@@ -101,7 +101,8 @@ export class AppComponent implements OnInit, OnDestroy {
 		  }
 		  //if found null from the accounts.manytools.io
 		  else{
-			window.location.href='https://account.manytools.io/'
+			  console.log('In else condition')
+			// window.location.href='https://account.manytools.io/'
 		  }
 	  }
 	}
@@ -125,7 +126,9 @@ export class AppComponent implements OnInit, OnDestroy {
 				this.JWTParsing(res)
 			},
 			error=>{
-				window.location.href='https://account.manytools.io/'
+				console.log('errrrr1')
+				console.log(error)
+				// window.location.href='https://account.manytools.io/'
 			}
 		)
 	}
