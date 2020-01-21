@@ -11,6 +11,9 @@ import { locale as esLang } from './core/_config/i18n/es';
 import { locale as jpLang } from './core/_config/i18n/jp';
 import { locale as deLang } from './core/_config/i18n/de';
 import { locale as frLang } from './core/_config/i18n/fr';
+import { HttpClient, HttpHeaders } from '@angular/common/http'
+import{ CommonClass } from './commonUrl/common-url'
+// import { HttpHeaders } from '@angular/common/http';
 
 @Component({
 	// tslint:disable-next-line:component-selector
@@ -23,13 +26,15 @@ export class AppComponent implements OnInit, OnDestroy {
 	// Public properties
 	title = 'Metronic';
 	loader: boolean;
+	URL=CommonClass.commonUrl;
 	private unsubscribe: Subscription[] = []; // Read more: => https://brianflove.com/2016/12/11/anguar-2-unsubscribe-observables/
 
 	
 	constructor(private translationService: TranslationService,
 				private router: Router,
 				private layoutConfigService: LayoutConfigService,
-				private splashScreenService: SplashScreenService) {
+				private splashScreenService: SplashScreenService,
+				private http:HttpClient) {
 
 		// register translations
 		this.translationService.loadTranslations(enLang, chLang, esLang, jpLang, deLang, frLang);
@@ -87,11 +92,27 @@ export class AppComponent implements OnInit, OnDestroy {
 		return false;
 	  }
 	  if(e.data && (e.data.length > 0) && (e.data != undefined)){
-		console.log("After Checks : ",e.data);
-	    // again call validation function
+		  if(e.data != null){
+			console.log("After Checks : ",e.data);
+			this.validateToken(e.data)
+		  }
+		  else{
+			window.location.href='https://account.manytools.io/'
+		  }
 	  }
 	}
 	validateToken(token){
+		const httpOptions = {
+			headers: new HttpHeaders({
+			 'Authorization': "Bearer "+token,
+			 dataType: 'json',
+           	 contentType: "application/json",
+			})
+		  };
+		this.http.post(this.URL+'/users/login',httpOptions)
+		.subscribe(
+			res=>console.log(res)
+		)
 		//token found and send a request for validation
 
 		//if validate run this code 
