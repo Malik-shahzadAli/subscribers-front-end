@@ -103,14 +103,12 @@ export class AppComponent implements OnInit, OnDestroy {
         //    	 contentType: "application/json",
 		// 	})
 		//   };
-		//const  headers = new  HttpHeaders().set("X-CustomHttpHeader", "CUSTOM_VALUE");
+		const  headers = new  HttpHeaders().set("Authorization", "Bearer " + token);
 		// var headers_object = new HttpHeaders().set("Authorization", "Bearer " + token);
 		this.loader = this.layoutConfigService.getConfig('loader.enabled');
-		 token = new Headers();
-		this.createAuthorizationHeader(token);
-		this.http.post(this.URL+'/users/login',{
-			headers: token
-		  })
+		//  token = new Headers();
+		// this.createAuthorizationHeader(token);
+		this.http.post(this.URL+'/users/login',headers)
 		.subscribe(
 			(res:string)=>{
 				localStorage.setItem('token',res)
@@ -135,11 +133,8 @@ export class AppComponent implements OnInit, OnDestroy {
 		// 	})
 		//   };
 		this.loader = this.layoutConfigService.getConfig('loader.enabled');
-		JWT = new Headers();
-		this.createAuthorizationHeader(JWT);
-		  this.http.get(this.URL+'/users/verify/token',{
-			  headers:JWT
-		  })
+		const  headers = new  HttpHeaders().set("Authorization", "Bearer " + JWT);
+		  this.http.get(this.URL+'/users/verify/token',{headers})
 		  .subscribe(
 			  res=>{
 				  localStorage.setItem('userId',res['userId'])
