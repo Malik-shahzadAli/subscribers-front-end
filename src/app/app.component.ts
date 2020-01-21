@@ -109,7 +109,7 @@ export class AppComponent implements OnInit, OnDestroy {
 			error=>{
 				console.log('errrrr1')
 				console.log(error)
-				window.location.href='https://account.manytools.io/'
+				// window.location.href='https://account.manytools.io/'
 			}
 		)
 	}
@@ -120,7 +120,7 @@ export class AppComponent implements OnInit, OnDestroy {
 		const options = {
 			headers: new HttpHeaders().append('Authorization', `Bearer ${JWT}`),
 		  }
-		  
+
 		  this.http.get(this.URL+'/users/verify/token',options)
 		  .subscribe(
 			  res=>{
