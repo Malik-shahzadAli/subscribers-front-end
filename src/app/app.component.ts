@@ -136,11 +136,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
 
 	loadGUI(){
-		console.log('calling here ')
-		// this.loader = this.layoutConfigService.getConfig('loader.enabled');
-		//call validate function and pass the found token for verification
+	
 		const routerSubscription = this.router.events.subscribe(event => {
-			if (event instanceof NavigationEnd) {
+			console.log('calling here ')
+			// if (event instanceof NavigationEnd) {
 				
 				console.log('console.log here ')
 				// hide splash screen
@@ -154,7 +153,7 @@ export class AppComponent implements OnInit, OnDestroy {
 					document.body.classList.add('kt-page--loaded');
 					console.log('Set Time out ')
 				}, 500);
-			}
+			// }
 		});
 		this.unsubscribe.push(routerSubscription);
 	}
