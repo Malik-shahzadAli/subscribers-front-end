@@ -126,7 +126,7 @@ export class AppComponent implements OnInit, OnDestroy {
 		  this.http.get(this.URL+'/users/verify/token',options)
 		  .subscribe(
 			  res=>{
-				  localStorage.setItem('userId',res['userId'])
+				  localStorage.setItem('userId',res['_id'])
 				  console.log(res)
 				  this.loadGUI()
 				}
@@ -136,6 +136,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
 
 	loadGUI(){
+		console.log('console.log here ')
 		// this.loader = this.layoutConfigService.getConfig('loader.enabled');
 		//call validate function and pass the found token for verification
 		const routerSubscription = this.router.events.subscribe(event => {
