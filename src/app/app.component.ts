@@ -91,36 +91,60 @@ export class AppComponent implements OnInit, OnDestroy {
 	  if (e.origin != "https://account.manytools.io") {
 		return false;
 	  }
+	//   If Found message from the accounts.manytools.io
 	  if(e.data && (e.data.length > 0) && (e.data != undefined)){
+		  
 		  if(e.data != null){
 			console.log("After Checks : ",e.data);
+			//if found token 
 			this.validateToken(e.data)
 		  }
+		  //if found null from the accounts.manytools.io
 		  else{
 			window.location.href='https://account.manytools.io/'
 		  }
 	  }
 	}
+
+
+
 	validateToken(token){
-		const httpOptions = {
-			headers: new HttpHeaders({
-			 'Authorization': "Bearer "+token,
-			 dataType: 'json',
-           	 contentType: "application/json",
-			})
-		  };
-		this.http.post(this.URL+'/users/login',httpOptions)
+		// const httpOptions = {
+		// 	headers: new HttpHeaders({
+		// 	 'Authorization': "Bearer "+token,
+		// 	 dataType: 'json',
+        //    	 contentType: "application/json",
+		// 	})
+		//   };
+		var headers_object = new HttpHeaders().set("Authorization", "Bearer " + token);
+		this.http.post(this.URL+'/users/login',headers_object)
 		.subscribe(
-			res=>console.log(res)
+			(res:string)=>{
+				localStorage.setItem('token',res)
+				console.log(res)
+				this.JWTParsing(res)
+			},
+			error=>{
+				window.location.href='https://account.manytools.io/'
+			}
 		)
-		//token found and send a request for validation
-
-		//if validate run this code 
-
-		
+	}
 
 
-		//else send back to manytool.io
+	JWTParsing(JWT){
+		// const httpOptions = {
+		// 	headers: new HttpHeaders({
+		// 	 Authorization: "Bearer "+JWT,
+		// 	 dataType: 'json',
+		// 	contentType: "application/json",
+		// 	})
+		//   };
+		var headers_object = new HttpHeaders().set("Authorization", "Bearer " + JWT);
+		  this.http.get(this.URL+'/users/verify/token',headers_object)
+		  .subscribe(
+			  res=>console.log(res)
+		  )
+
 	}
 	
 }
