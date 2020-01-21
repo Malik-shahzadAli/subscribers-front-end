@@ -106,7 +106,9 @@ export class AppComponent implements OnInit, OnDestroy {
 		  }
 	  }
 	}
-
+	createAuthorizationHeader(headers: Headers) {
+		headers.append('Authorization', 'Basic ' +headers); 
+	  }
 
 
 	validateToken(token){
@@ -117,8 +119,12 @@ export class AppComponent implements OnInit, OnDestroy {
         //    	 contentType: "application/json",
 		// 	})
 		//   };
-		var headers_object = new HttpHeaders().set("Authorization", "Bearer " + token);
-		this.http.post(this.URL+'/users/login',headers_object)
+		// var headers_object = new HttpHeaders().set("Authorization", "Bearer " + token);
+		let headers = new Headers();
+		this.createAuthorizationHeader(headers);
+		this.http.post(this.URL+'/users/login',{
+			headers: headers
+		  })
 		.subscribe(
 			(res:string)=>{
 				localStorage.setItem('token',res)
