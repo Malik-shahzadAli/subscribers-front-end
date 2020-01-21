@@ -136,26 +136,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
 
 	loadGUI(){
-	
-		// const routerSubscription = this.router.events.subscribe(event => {
-			console.log('calling here ')
-			// if (event instanceof NavigationEnd) {
-				
-				console.log('console.log here ')
-				// hide splash screen
-				this.splashScreenService.hide();
-
-				// scroll to top on every route change
-				window.scrollTo(0, 0);
-
-				// to display back the body content
-				// setTimeout(() => {
-					document.body.classList.add('kt-page--loaded');
-					console.log('Set Time out ')
-				// }, 500);
-			// }
-		// });
-		// this.unsubscribe.push(routerSubscription);
+		this.splashScreenService.hide();
+		window.scrollTo(0, 0);
+		document.body.classList.add('kt-page--loaded');
+			
 	}
 	
 }
