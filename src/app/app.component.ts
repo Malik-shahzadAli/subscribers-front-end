@@ -137,7 +137,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
 	loadGUI(){
 	
-		const routerSubscription = this.router.events.subscribe(event => {
+		// const routerSubscription = this.router.events.subscribe(event => {
 			console.log('calling here ')
 			// if (event instanceof NavigationEnd) {
 				
@@ -149,13 +149,13 @@ export class AppComponent implements OnInit, OnDestroy {
 				window.scrollTo(0, 0);
 
 				// to display back the body content
-				setTimeout(() => {
+				// setTimeout(() => {
 					document.body.classList.add('kt-page--loaded');
 					console.log('Set Time out ')
-				}, 500);
+				// }, 500);
 			// }
-		});
-		this.unsubscribe.push(routerSubscription);
+		// });
+		// this.unsubscribe.push(routerSubscription);
 	}
 	
 }
