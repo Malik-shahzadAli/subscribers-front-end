@@ -51,7 +51,7 @@ export class AppComponent implements OnInit, OnDestroy {
 		 else{
 		// 	// window.location.href='https://account.manytools.io/'
 		 this.loader = this.layoutConfigService.getConfig('loader.enabled');
-			setTimeout(() => {
+			// setTimeout(() => {
 				let iframe = document.getElementsByTagName('iframe')[0];
 				let win;
 				try {
@@ -62,7 +62,7 @@ export class AppComponent implements OnInit, OnDestroy {
 					win = iframe.contentWindow;
 					console.log(e)
 				}
-			}, 10000);
+			// }, 10000);
 		 }
 
 	}
@@ -136,6 +136,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
 
 	loadGUI(){
+		console.log('calling here ')
 		// this.loader = this.layoutConfigService.getConfig('loader.enabled');
 		//call validate function and pass the found token for verification
 		const routerSubscription = this.router.events.subscribe(event => {
