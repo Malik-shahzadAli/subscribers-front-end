@@ -106,7 +106,7 @@ export class AppComponent implements OnInit, OnDestroy {
 			(res:string)=>{
 				localStorage.setItem('token',res)
 				console.log(res)
-				this.JWTParsing(res)
+				this.JWTParsing(res['token'])
 			},
 			error=>{
 				console.log('errrrr1')
