@@ -103,8 +103,8 @@ export class AppComponent implements OnInit, OnDestroy {
 		this.loader = this.layoutConfigService.getConfig('loader.enabled');
 		this.http.post(this.URL+'/users/login',{},options)
 		.subscribe(
-			(res:string)=>{
-				localStorage.setItem('token',res)
+			(res)=>{
+				localStorage.setItem('token',res['token'])
 				console.log(res)
 				this.JWTParsing(res['token'])
 			},
