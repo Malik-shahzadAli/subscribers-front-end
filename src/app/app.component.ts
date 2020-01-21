@@ -51,7 +51,7 @@ export class AppComponent implements OnInit, OnDestroy {
 		 else{
 		// 	// window.location.href='https://account.manytools.io/'
 		 this.loader = this.layoutConfigService.getConfig('loader.enabled');
-			// setTimeout(() => {
+			 setTimeout(() => {
 				let iframe = document.getElementsByTagName('iframe')[0];
 				let win;
 				try {
@@ -62,7 +62,7 @@ export class AppComponent implements OnInit, OnDestroy {
 					win = iframe.contentWindow;
 					console.log(e)
 				}
-			// }, 10000);
+			 }, 10000);
 		 }
 
 	}
