@@ -41,7 +41,8 @@ export class AppComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnInit(): void {
-		 let token=localStorage.getItem('token')
+		 let token=localStorage.getItem('token');
+		 console.log(token)
 		 if(token){
 			this.loader = this.layoutConfigService.getConfig('loader.enabled');
 			//call validate function and pass the found token for verification
@@ -107,7 +108,7 @@ export class AppComponent implements OnInit, OnDestroy {
 	  }
 	}
 	createAuthorizationHeader(headers: Headers) {
-		headers.append('Authorization', 'Basic ' +headers); 
+		headers.append('Authorization', 'Bearer ' +headers); 
 	  }
 
 
@@ -120,10 +121,10 @@ export class AppComponent implements OnInit, OnDestroy {
 		// 	})
 		//   };
 		// var headers_object = new HttpHeaders().set("Authorization", "Bearer " + token);
-		let headers = new Headers();
-		this.createAuthorizationHeader(headers);
+		 token = new Headers();
+		this.createAuthorizationHeader(token);
 		this.http.post(this.URL+'/users/login',{
-			headers: headers
+			headers: token
 		  })
 		.subscribe(
 			(res:string)=>{
@@ -148,12 +149,14 @@ export class AppComponent implements OnInit, OnDestroy {
 		// 	contentType: "application/json",
 		// 	})
 		//   };
-		console.log('hereee')
-		var headers_object = new HttpHeaders().set("Authorization", "Bearer " + JWT);
-		//   this.http.get(this.URL+'/users/verify/token',headers_object)
-		//   .subscribe(
-		// 	  res=>console.log(res)
-		//   )
+		JWT = new Headers();
+		this.createAuthorizationHeader(JWT);
+		  this.http.get(this.URL+'/users/verify/token',{
+			  headers:JWT
+		  })
+		  .subscribe(
+			  res=>console.log(res)
+		  )
 
 	}
 	
