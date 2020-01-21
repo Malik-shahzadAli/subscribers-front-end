@@ -139,11 +139,12 @@ export class AppComponent implements OnInit, OnDestroy {
 		// 	contentType: "application/json",
 		// 	})
 		//   };
+		console.log('hereee')
 		var headers_object = new HttpHeaders().set("Authorization", "Bearer " + JWT);
-		  this.http.get(this.URL+'/users/verify/token',headers_object)
-		  .subscribe(
-			  res=>console.log(res)
-		  )
+		//   this.http.get(this.URL+'/users/verify/token',headers_object)
+		//   .subscribe(
+		// 	  res=>console.log(res)
+		//   )
 
 	}
 	
