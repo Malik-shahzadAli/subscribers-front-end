@@ -62,7 +62,7 @@ export class AppComponent implements OnInit, OnDestroy {
 					win = iframe.contentWindow;
 					console.log(e)
 				}
-			 }, 1000);
+			 }, 10000);
 		 }
 
 	}
