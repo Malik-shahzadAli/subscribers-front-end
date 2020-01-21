@@ -62,7 +62,7 @@ export class AppComponent implements OnInit, OnDestroy {
 					win = iframe.contentWindow;
 					console.log(e)
 				}
-			 }, 10000);
+			 }, 1000);
 		 }
 
 	}
@@ -91,53 +91,65 @@ export class AppComponent implements OnInit, OnDestroy {
 	  }
 	}
 
-
-
+	//validate token function
 	validateToken(token){
-		console.log(token)
+		//sending new token in header
 		const newToken=`Bearer ${token}`
 		const options = {
 			headers: new HttpHeaders().append('Authorization',newToken ),
 		  }
-		console.log(newToken)
+		  //loader
 		this.loader = this.layoutConfigService.getConfig('loader.enabled');
+		//sending a post request
 		this.http.post(this.URL+'/users/login',{},options)
 		.subscribe(
 			(res)=>{
+				//setting token in the local stroge
 				localStorage.setItem('token',res['token'])
 				console.log(res)
+				//parsing jwt token 
+				//calling a function which parse the jwt
 				this.JWTParsing(res['token'])
 			},
 			error=>{
-				console.log('errrrr1')
-				console.log(error)
-				// window.location.href='https://account.manytools.io/'
+				//if error redirect the user to accounts.manytools.io
+				window.location.href='https://account.manytools.io/'
 			}
 		)
 	}
 
 
 	JWTParsing(JWT){
+		//loader
 		this.loader = this.layoutConfigService.getConfig('loader.enabled');
-		const options = {
+		//setting thr header
+		const head = {
+			//appending the header
 			headers: new HttpHeaders().append('Authorization', `Bearer ${JWT}`),
 		  }
 
-		  this.http.get(this.URL+'/users/verify/token',options)
+		  //passing the jwt token for verification and parsing
+		  this.http.get(this.URL+'/users/verify/token',head)
 		  .subscribe(
 			  res=>{
 				  localStorage.setItem('userId',res['_id'])
-				  console.log(res)
+				  //if response loading the gui
 				  this.loadGUI()
+				},
+				error=>{
+					window.location.href='https://account.manytools.io/'
 				}
 		  )
 
 	}
 
-
+//loading the gui on window
 	loadGUI(){
+		//hiding the splash screen
 		this.splashScreenService.hide();
+		//window scroll at the top
 		window.scrollTo(0, 0);
+		//adding the content class on the document body
 		document.body.classList.add('kt-page--loaded');
 			
 	}

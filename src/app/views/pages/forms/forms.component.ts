@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 import {  FormGroup,FormControl, Validators,FormBuilder} from '@angular/forms';
 //
 import { CommonClass } from './../../../commonUrl/common-url'
-import { HttpClient } from '@angular/common/http'
+import { HttpClient,HttpHeaders } from '@angular/common/http'
 @Component({
   selector: 'kt-forms',
   templateUrl: './forms.component.html',
@@ -12,6 +12,11 @@ import { HttpClient } from '@angular/common/http'
 })
 export class FormsComponent  {
   error:boolean=false;
+  token= localStorage.getItem('token');
+  head = {
+	//appending the header
+	 headers: new HttpHeaders().append('Authorization', `Bearer ${this.token}`),
+	}
 	constructor(private http: HttpClient,private formBuilder:FormBuilder) { }
 	URL=CommonClass.commonUrl;
 	uploadForm: FormGroup;  
@@ -51,7 +56,7 @@ export class FormsComponent  {
 		formData.append('subscriberIds', this.uploadForm.get('subscriberIds').value);
 		formData.append('fileName', this.uploadForm.get('fileName').value);
 		formData.append('accessToken', this.uploadForm.get('accessToken').value);
-		this.http.post(this.URL+'/files/upload',formData)
+		this.http.post(this.URL+'/files/upload',formData,this.head)
 		.subscribe(
 			res => console.log(res)
 		);
