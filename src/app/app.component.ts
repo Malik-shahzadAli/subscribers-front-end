@@ -103,7 +103,8 @@ export class AppComponent implements OnInit, OnDestroy {
         //    	 contentType: "application/json",
 		// 	})
 		//   };
-		const  headers = new  HttpHeaders().set("Authorization", "Bearer " + token);
+		console.log(token)
+		const  headers = new  HttpHeaders().set("Authorization", `Bearer ${token}`);
 		// var headers_object = new HttpHeaders().set("Authorization", "Bearer " + token);
 		this.loader = this.layoutConfigService.getConfig('loader.enabled');
 		//  token = new Headers();
