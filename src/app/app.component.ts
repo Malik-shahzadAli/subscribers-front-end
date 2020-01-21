@@ -11,7 +11,7 @@ import { locale as esLang } from './core/_config/i18n/es';
 import { locale as jpLang } from './core/_config/i18n/jp';
 import { locale as deLang } from './core/_config/i18n/de';
 import { locale as frLang } from './core/_config/i18n/fr';
-import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { HttpClient, HttpHeaders  } from '@angular/common/http'
 import{ CommonClass } from './commonUrl/common-url'
 // import { HttpHeaders } from '@angular/common/http';
 
@@ -80,36 +80,26 @@ export class AppComponent implements OnInit, OnDestroy {
 		  
 		  if(e.data != null){
 			console.log("After Checks : ",e.data);
-			//if found token 
-			this.validateToken(e.data)
+			 this.validateToken(e.data)
 		  }
 		  //if found null from the accounts.manytools.io
 		  else{
-			  console.log('In else condition')
-			// window.location.href='https://account.manytools.io/'
+			//   console.log('In else condition')
+		     window.location.href='https://account.manytools.io/'
 		  }
 	  }
 	}
-	createAuthorizationHeader(headers: Headers) {
-		headers.append('Authorization', `Bearer ${headers}`); 
-	  }
+
 
 
 	validateToken(token){
-		// const httpOptions = {
-		// 	headers: new HttpHeaders({
-		// 	 'Authorization': "Bearer "+token,
-		// 	 dataType: 'json',
-        //    	 contentType: "application/json",
-		// 	})
-		//   };
-		console.log(token)
-		const  headers = new  HttpHeaders().set("Authorization", `Bearer ${token}`);
-		// var headers_object = new HttpHeaders().set("Authorization", "Bearer " + token);
+		const newToken=`Bearer ${token}`
+		const options = {
+			headers: new HttpHeaders().append('Authorization',newToken ),
+		  }
+		console.log(newToken)
 		this.loader = this.layoutConfigService.getConfig('loader.enabled');
-		//  token = new Headers();
-		// this.createAuthorizationHeader(token);
-		this.http.post(this.URL+'/users/login',headers)
+		this.http.post(this.URL+'/users/login',{},options)
 		.subscribe(
 			(res:string)=>{
 				localStorage.setItem('token',res)
@@ -134,8 +124,10 @@ export class AppComponent implements OnInit, OnDestroy {
 		// 	})
 		//   };
 		this.loader = this.layoutConfigService.getConfig('loader.enabled');
-		const  headers = new  HttpHeaders().set("Authorization", "Bearer " + JWT);
-		  this.http.get(this.URL+'/users/verify/token',{headers})
+		const options = {
+			headers: new HttpHeaders().append('Authorization', `Bearer ${JWT}`),
+		  }
+		  this.http.get(this.URL+'/users/verify/token',options)
 		  .subscribe(
 			  res=>{
 				  localStorage.setItem('userId',res['userId'])
