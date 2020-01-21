@@ -108,7 +108,7 @@ export class AppComponent implements OnInit, OnDestroy {
 	  }
 	}
 	createAuthorizationHeader(headers: Headers) {
-		headers.append('Authorization', 'Bearer ' +headers); 
+		headers.append('Authorization', `Bearer ${headers}`); 
 	  }
 
 
