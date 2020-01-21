@@ -45,29 +45,12 @@ export class AppComponent implements OnInit, OnDestroy {
 		 console.log(token)
 		 if(token){
 			this.loader = this.layoutConfigService.getConfig('loader.enabled');
-			//call validate function and pass the found token for verification
-			const routerSubscription = this.router.events.subscribe(event => {
-				if (event instanceof NavigationEnd) {
-					// hide splash screen
-					this.splashScreenService.hide();
-	
-					// scroll to top on every route change
-					window.scrollTo(0, 0);
-	
-					// to display back the body content
-					setTimeout(() => {
-						document.body.classList.add('kt-page--loaded');
-					}, 500);
-				}
-			});
-			this.unsubscribe.push(routerSubscription);
-			 
-			
+			 this.validateToken(token)
 		 }
 
 		 else{
 		// 	// window.location.href='https://account.manytools.io/'
-		// 	// this.loader = this.layoutConfigService.getConfig('loader.enabled');
+		 this.loader = this.layoutConfigService.getConfig('loader.enabled');
 			setTimeout(() => {
 				let iframe = document.getElementsByTagName('iframe')[0];
 				let win;
@@ -120,7 +103,9 @@ export class AppComponent implements OnInit, OnDestroy {
         //    	 contentType: "application/json",
 		// 	})
 		//   };
+		//const  headers = new  HttpHeaders().set("X-CustomHttpHeader", "CUSTOM_VALUE");
 		// var headers_object = new HttpHeaders().set("Authorization", "Bearer " + token);
+		this.loader = this.layoutConfigService.getConfig('loader.enabled');
 		 token = new Headers();
 		this.createAuthorizationHeader(token);
 		this.http.post(this.URL+'/users/login',{
@@ -149,15 +134,41 @@ export class AppComponent implements OnInit, OnDestroy {
 		// 	contentType: "application/json",
 		// 	})
 		//   };
+		this.loader = this.layoutConfigService.getConfig('loader.enabled');
 		JWT = new Headers();
 		this.createAuthorizationHeader(JWT);
 		  this.http.get(this.URL+'/users/verify/token',{
 			  headers:JWT
 		  })
 		  .subscribe(
-			  res=>console.log(res)
+			  res=>{
+				  localStorage.setItem('userId',res['userId'])
+				  console.log(res)
+				  this.loadGUI()
+				}
 		  )
 
+	}
+
+
+	loadGUI(){
+		// this.loader = this.layoutConfigService.getConfig('loader.enabled');
+		//call validate function and pass the found token for verification
+		const routerSubscription = this.router.events.subscribe(event => {
+			if (event instanceof NavigationEnd) {
+				// hide splash screen
+				this.splashScreenService.hide();
+
+				// scroll to top on every route change
+				window.scrollTo(0, 0);
+
+				// to display back the body content
+				setTimeout(() => {
+					document.body.classList.add('kt-page--loaded');
+				}, 500);
+			}
+		});
+		this.unsubscribe.push(routerSubscription);
 	}
 	
 }
