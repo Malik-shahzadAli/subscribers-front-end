@@ -10,6 +10,8 @@ import { PartialsModule } from '../partials/partials.module';
 import { CoreModule } from '../../core/core.module';
 import { PopupWindowComponent } from './popup-window/popup-window.component';
 // import {MaterialTableComponent}
+
+import {MatDialogModule} from '@angular/material/dialog';
 @NgModule({
 	declarations: [PopupWindowComponent],
 	exports: [],
@@ -19,6 +21,7 @@ import { PopupWindowComponent } from './popup-window/popup-window.component';
 		FormsModule,
 		CoreModule,
 		PartialsModule,
+		MatDialogModule
 	],
 	providers: []
 })
