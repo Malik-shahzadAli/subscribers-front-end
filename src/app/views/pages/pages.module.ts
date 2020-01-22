@@ -8,9 +8,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { PartialsModule } from '../partials/partials.module';
 // Pages
 import { CoreModule } from '../../core/core.module';
+import { PopupWindowComponent } from './popup-window/popup-window.component';
 // import {MaterialTableComponent}
 @NgModule({
-	declarations: [],
+	declarations: [PopupWindowComponent],
 	exports: [],
 	imports: [
 		CommonModule,

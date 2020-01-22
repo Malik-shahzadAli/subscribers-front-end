@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material'
+import { PopupWindowComponent } from '../popup-window/popup-window.component';
 
 @Component({
   selector: 'kt-try',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TryComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog:MatDialog) { }
 
   ngOnInit() {
+  }
+  openDialog(){
+    this.dialog.open(PopupWindowComponent)
   }
 
 }
