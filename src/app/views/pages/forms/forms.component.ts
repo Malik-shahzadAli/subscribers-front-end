@@ -8,7 +8,6 @@ import { HttpClient,HttpHeaders } from '@angular/common/http'
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { PopupWindowComponent } from '../popup-window/popup-window.component';
-import { FileNameValidator } from './form.validator';
 @Component({
   selector: 'kt-forms',
   templateUrl: './forms.component.html',
@@ -21,7 +20,7 @@ export class FormsComponent  {
 	//appending the header
 	 headers: new HttpHeaders().append('Authorization', `Bearer ${this.token}`),
 	}
-	constructor(private http: HttpClient,private formBuilder:FormBuilder,public dialog:MatDialog,private fileValidator:FileNameValidator) { }
+	constructor(private http: HttpClient,private formBuilder:FormBuilder,public dialog:MatDialog) { }
 	URL=CommonClass.commonUrl;
 	uploadForm: FormGroup;
 	// Description:'Uploading';
@@ -35,7 +34,7 @@ export class FormsComponent  {
 			Validators.required,
 				Validators.minLength(3),
 				Validators.maxLength(100)
-		],this.fileValidator.shouldUnique),
+		]),
 		accessToken:new FormControl('',[
 			Validators.required,
 			Validators.minLength(3),
