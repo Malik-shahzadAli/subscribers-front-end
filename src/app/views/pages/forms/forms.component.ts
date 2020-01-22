@@ -1,10 +1,17 @@
 
 // Angular
-import { Component } from '@angular/core';
+import { Component,Inject } from '@angular/core';
 import {  FormGroup,FormControl, Validators,FormBuilder} from '@angular/forms';
 //
 import { CommonClass } from './../../../commonUrl/common-url'
-import { HttpClient,HttpHeaders } from '@angular/common/http'
+import { HttpClient,HttpHeaders } from '@angular/common/http';
+//Mat Dialoge
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+
+export interface DialogData {
+	animal: 'panda' | 'unicorn' | 'lion';
+  }
+  
 @Component({
   selector: 'kt-forms',
   templateUrl: './forms.component.html',
@@ -17,7 +24,7 @@ export class FormsComponent  {
 	//appending the header
 	 headers: new HttpHeaders().append('Authorization', `Bearer ${this.token}`),
 	}
-	constructor(private http: HttpClient,private formBuilder:FormBuilder) { }
+	constructor(private http: HttpClient,private formBuilder:FormBuilder ,public dialog: MatDialog) { }
 	URL=CommonClass.commonUrl;
 	uploadForm: FormGroup;  
 	ngOnInit() {
@@ -71,6 +78,19 @@ export class FormsComponent  {
 		const result = control.hasError(validationType) && (control.dirty || control.touched);
 		return result;
 	}
-
+	openDialog() {
+		this.dialog.open(DialogDataExampleDialog, {
+		  data: {
+			animal: 'panda'
+		  }
+		});
+	  }
 
 }
+@Component({
+	selector: 'dialog-data-example-dialog',
+	templateUrl: 'dialog-component.ts',
+  })
+  export class DialogDataExampleDialog {
+	constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+  }
