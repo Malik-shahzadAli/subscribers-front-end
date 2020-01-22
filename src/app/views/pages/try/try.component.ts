@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+
 import { PopupWindowComponent } from '../popup-window/popup-window.component';
 
 @Component({
@@ -9,12 +9,12 @@ import { PopupWindowComponent } from '../popup-window/popup-window.component';
 })
 export class TryComponent implements OnInit {
 
-  constructor(public dialog:MatDialog) { }
+  constructor() { }
 
   ngOnInit() {
   }
-  openDialog(){
-    this.dialog.open(PopupWindowComponent)
-  }
+  // openDialog(){
+    
+  // }
 
 }

@@ -5,6 +5,9 @@ import {  FormGroup,FormControl, Validators,FormBuilder} from '@angular/forms';
 //
 import { CommonClass } from './../../../commonUrl/common-url'
 import { HttpClient,HttpHeaders } from '@angular/common/http'
+
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { PopupWindowComponent } from '../popup-window/popup-window.component';
 @Component({
   selector: 'kt-forms',
   templateUrl: './forms.component.html',
@@ -17,7 +20,7 @@ export class FormsComponent  {
 	//appending the header
 	 headers: new HttpHeaders().append('Authorization', `Bearer ${this.token}`),
 	}
-	constructor(private http: HttpClient,private formBuilder:FormBuilder) { }
+	constructor(private http: HttpClient,private formBuilder:FormBuilder,public dialog:MatDialog) { }
 	URL=CommonClass.commonUrl;
 	uploadForm: FormGroup;  
 	ngOnInit() {
@@ -56,6 +59,7 @@ export class FormsComponent  {
 		formData.append('subscriberIds', this.uploadForm.get('subscriberIds').value);
 		formData.append('fileName', this.uploadForm.get('fileName').value);
 		formData.append('accessToken', this.uploadForm.get('accessToken').value);
+		this.dialog.open(PopupWindowComponent)
 		this.http.post(this.URL+'/files/upload',formData,this.head)
 		.subscribe(
 			res => console.log(res)
