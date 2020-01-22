@@ -5,6 +5,8 @@ import { HttpClient,HttpHeaders } from '@angular/common/http'
 
 import{ CommonClass } from './../../../commonUrl/common-url'
 
+import { MatDialog } from '@angular/material/dialog';
+import { PopupWindowComponent } from '../popup-window/popup-window.component';
 
 @Component({
   selector: 'kt-subscribers',
@@ -16,7 +18,7 @@ export class SubscribersComponent implements OnInit {
  URL=CommonClass.commonUrl;
  token=localStorage.getItem('token')
 //  REFREST_URL=URL+'/files/refresh'
-  constructor(private params:ActivatedRoute,private http:HttpClient) { }
+  constructor(private params:ActivatedRoute,private http:HttpClient, public dialog:MatDialog) { }
 
   ngOnInit() {
  
@@ -36,6 +38,7 @@ export class SubscribersComponent implements OnInit {
 		  }
    refresh(){
     //  console.log('refresh calling')
+    this.dialog.open(PopupWindowComponent,{data:{description:'Fetching',content:'We Just start fetching updated data please wait...'}})
     this.http.post(this.URL+'/subscribers/refresh/'+this.id,{},this.head)
     .subscribe(
       res=>console.log(res)
