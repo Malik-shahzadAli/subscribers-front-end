@@ -54,10 +54,14 @@ export class SubscribersComponent implements OnInit {
     )
    }
    exportAsJSON(){
-    console.log(this.URL+'/subscribers/export/json/'+this.id);
+    // console.log(this.URL+'/subscribers/export/json/'+this.id);
     this.http.get(this.URL+'/subscribers/export/json/'+this.id,this.head)
     .subscribe(
-      res=>console.log(res)
+      (res:string)=>{
+        console.log(res)
+        window.open(this.URL+res, "_blank");
+      }
+     
     )
    }
 
