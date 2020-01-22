@@ -6,13 +6,9 @@ import {  FormGroup,FormControl, Validators,FormBuilder} from '@angular/forms';
 import { CommonClass } from './../../../commonUrl/common-url'
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 //Mat Dialoge
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 import { DialogComponent } from '../material/popups-and-modals/dialog/dialog.component';
 
-export interface DialogData {
-	animal: 'panda' | 'unicorn' | 'lion';
-  }
-  
 @Component({
   selector: 'kt-forms',
   templateUrl: './forms.component.html',
