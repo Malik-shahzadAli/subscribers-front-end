@@ -1,6 +1,6 @@
 
 // Angular
-import { Component,Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import {  FormGroup,FormControl, Validators,FormBuilder} from '@angular/forms';
 //
 import { CommonClass } from './../../../commonUrl/common-url'
