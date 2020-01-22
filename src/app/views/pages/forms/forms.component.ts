@@ -23,8 +23,8 @@ export class FormsComponent  {
 	constructor(private http: HttpClient,private formBuilder:FormBuilder,public dialog:MatDialog) { }
 	URL=CommonClass.commonUrl;
 	uploadForm: FormGroup;
-	Description:'Uploading';
-	content:'Your File is Just start uploading please wait..' ;
+	// Description:'Uploading';
+	// content:'Your File is Just start uploading please wait..' ;
 	ngOnInit() {
 		this.uploadForm = this.formBuilder.group({
 			subscriberIds:new FormControl('',[
@@ -61,7 +61,7 @@ export class FormsComponent  {
 		formData.append('subscriberIds', this.uploadForm.get('subscriberIds').value);
 		formData.append('fileName', this.uploadForm.get('fileName').value);
 		formData.append('accessToken', this.uploadForm.get('accessToken').value);
-		this.dialog.open(PopupWindowComponent,{data:{description:this.Description,content:this.content}})
+		this.dialog.open(PopupWindowComponent,{data:{description:'Uploading',content:'Your File is Just start uploading please wait..'}})
 		this.http.post(this.URL+'/files/upload',formData,this.head)
 		.subscribe(
 			res => console.log(res)
