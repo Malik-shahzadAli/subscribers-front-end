@@ -64,7 +64,13 @@ export class FormsComponent  {
 		this.dialog.open(PopupWindowComponent,{data:{description:'Uploading',content:'Your File is Just start uploading please wait..'}})
 		this.http.post(this.URL+'/files/upload',formData,this.head)
 		.subscribe(
-			res => console.log(res)
+			(res)=> {
+				console.log(res)
+				this.dialog.open(PopupWindowComponent,{data:{description:'Uploading',content:'Your File is Just start uploading please wait..'}})
+			},
+			(error)=>{
+				this.dialog.open(PopupWindowComponent,{data:{description:'Access Token',content:'Access Token is Invalid '}})
+			}
 		);
 	  }
 	//validator function which genrates the error 
