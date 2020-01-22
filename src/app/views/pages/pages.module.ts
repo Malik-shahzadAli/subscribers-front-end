@@ -8,10 +8,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { PartialsModule } from '../partials/partials.module';
 // Pages
 import { CoreModule } from '../../core/core.module';
-import { DialogComponent } from './dialog/dialog.component';
 // import {MaterialTableComponent}
 @NgModule({
-	declarations: [DialogComponent],
+	declarations: [],
 	exports: [],
 	imports: [
 		CommonModule,

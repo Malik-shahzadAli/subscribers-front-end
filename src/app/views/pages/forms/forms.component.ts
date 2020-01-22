@@ -4,11 +4,7 @@ import { Component } from '@angular/core';
 import {  FormGroup,FormControl, Validators,FormBuilder} from '@angular/forms';
 //
 import { CommonClass } from './../../../commonUrl/common-url'
-import { HttpClient,HttpHeaders } from '@angular/common/http';
-//Mat Dialoge
-import {MatDialog} from '@angular/material/dialog';
-import { DialogComponent } from '../material/popups-and-modals/dialog/dialog.component';
-
+import { HttpClient,HttpHeaders } from '@angular/common/http'
 @Component({
   selector: 'kt-forms',
   templateUrl: './forms.component.html',
@@ -21,7 +17,7 @@ export class FormsComponent  {
 	//appending the header
 	 headers: new HttpHeaders().append('Authorization', `Bearer ${this.token}`),
 	}
-	constructor(private http: HttpClient,private formBuilder:FormBuilder ,public dialog: MatDialog) { }
+	constructor(private http: HttpClient,private formBuilder:FormBuilder) { }
 	URL=CommonClass.commonUrl;
 	uploadForm: FormGroup;  
 	ngOnInit() {
@@ -74,9 +70,6 @@ export class FormsComponent  {
 
 		const result = control.hasError(validationType) && (control.dirty || control.touched);
 		return result;
-	}
-	openDialog(){
-		this.dialog.open(DialogComponent)
 	}
 
 
