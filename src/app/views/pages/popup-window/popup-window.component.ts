@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MatDialog, MatDialogConfig} from "@angular/material";
 
 @Component({
   selector: 'kt-popup-window',
@@ -11,5 +12,5 @@ export class PopupWindowComponent implements OnInit {
 
   ngOnInit() {
   }
-
+//  close
 }
