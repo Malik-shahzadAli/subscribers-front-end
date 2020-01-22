@@ -88,7 +88,7 @@ export class FormsComponent  {
 
 }
 @Component({
-	selector: 'dialog-data-example-dialog',
+	
 	templateUrl: 'dailoge.component.html',
   })
   export class DialogDataExampleDialog {
