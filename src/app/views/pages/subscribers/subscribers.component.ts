@@ -31,11 +31,9 @@ export class SubscribersComponent implements OnInit {
 		})
    }
       
-     head = {
-      //appending the header
-    
+    head = {
 			headers: new HttpHeaders().append('Authorization', `Bearer ${this.token}`),
-		  }
+		}
    refresh(){
     //  console.log('refresh calling')
     this.dialog.open(PopupWindowComponent,{data:{description:'Fetching',content:'We Just start fetching updated data please wait...'}})
@@ -46,13 +44,12 @@ export class SubscribersComponent implements OnInit {
    }
    exportAsCSV(){
     // console.log('csv calling')
-    console.log(this.URL+'/subscribers/export/csv/'+this.id)
     this.http.get(this.URL+'/subscribers/export/csv/'+this.id,this.head)
     .subscribe(
       (res:string)=>{
         console.log(res)
-        // window.open(this.URL+res, "_blank");
-        window.location.href = res;
+        window.open(res, "_blank");
+        // window.location.href = res;
       }
 
     )
