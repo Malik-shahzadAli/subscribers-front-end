@@ -45,4 +45,4 @@ export { SubheaderService } from './services/subheader.service';
 export { KtDialogService } from './services/kt-dialog.service';
 
 // Server
-export { FakeApiService } from './server/fake-api/fake-api.service';
+
