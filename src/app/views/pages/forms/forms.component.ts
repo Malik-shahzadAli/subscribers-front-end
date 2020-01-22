@@ -66,7 +66,7 @@ export class FormsComponent  {
 		.subscribe(
 			(res)=> {
 				console.log(res)
-				this.dialog.open(PopupWindowComponent,{data:{description:'Uploading',content:'Your File is Just start uploading please wait..'}})
+				this.dialog.open(PopupWindowComponent,{data:{description:'Uploaded',content:'Your file is uploded'}})
 			},
 			(error)=>{
 				this.dialog.open(PopupWindowComponent,{data:{description:'Access Token',content:'Access Token is Invalid '}})
