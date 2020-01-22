@@ -53,8 +53,7 @@ import {
 	UploadFileService
 	// MatTableDataSource
 } from './core/_base/layout';
-// Auth
-import { AuthModule } from './views/pages/auth/auth.module';
+
 import { AuthService } from './core/auth';
 // CRUD
 import { HttpUtilsService, LayoutUtilsService, TypesUtilsService } from './core/_base/crud';
@@ -112,7 +111,6 @@ export function hljsLanguages(): HighlightLanguage[] {
 		EffectsModule.forRoot([]),
 		StoreRouterConnectingModule.forRoot({stateKey: 'router'}),
 		StoreDevtoolsModule.instrument(),
-		AuthModule.forRoot(),
 		TranslateModule.forRoot(),
 		MatProgressSpinnerModule,
 		InlineSVGModule.forRoot(),

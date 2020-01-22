@@ -1,8 +1,5 @@
-<!-- See off.documentations 'https://material.angular.io/components/table/overview' -->
+
 <div perfectScrollbar [ngStyle]="{'max-height': '43vh', 'position': 'relative'}" class="mat-table__wrapper mat-table__wrapper--dashboard mb-4">
-	<!-- Checkbox Column -->
-	<!-- Table with selection -->
-	<!-- https://run.stackblitz.com/api/angular/v1?file=app%2Ftable-selection-example.ts -->
 	<table mat-table class="lmat-elevation-z8" [dataSource]="dataSource" matSort matSortActive="id" matSortDirection="asc" matSortDisableClear>
 		<ng-container matColumnDef="fileName">
 			<th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
