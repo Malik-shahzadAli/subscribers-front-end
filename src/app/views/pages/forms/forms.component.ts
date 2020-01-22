@@ -7,6 +7,7 @@ import { CommonClass } from './../../../commonUrl/common-url'
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 //Mat Dialoge
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { DialogComponent } from '../material/popups-and-modals/dialog/dialog.component';
 
 export interface DialogData {
 	animal: 'panda' | 'unicorn' | 'lion';
@@ -78,19 +79,9 @@ export class FormsComponent  {
 		const result = control.hasError(validationType) && (control.dirty || control.touched);
 		return result;
 	}
-	openDialog() {
-		this.dialog.open(DialogDataExampleDialog, {
-		  data: {
-			animal: 'panda'
-		  }
-		});
-	  }
+	openDialog(){
+		this.dialog.open(DialogComponent)
+	}
+
 
 }
-@Component({
-	
-	templateUrl: 'dailoge.component.html',
-  })
-  export class DialogDataExampleDialog {
-	constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
-  }

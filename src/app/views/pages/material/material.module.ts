@@ -294,7 +294,7 @@ const routes: Routes = [
 		ReactiveFormsModule,
 		RouterModule.forChild(routes)
 	],
-	exports: [RouterModule,DialogComponent],
+	exports: [RouterModule],
 	entryComponents: [
 		PizzaPartyComponent,
 		DialogComponent,
