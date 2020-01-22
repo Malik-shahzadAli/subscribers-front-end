@@ -54,7 +54,7 @@ import {
 	// MatTableDataSource
 } from './core/_base/layout';
 
-import { AuthService } from './core/auth';
+
 // CRUD
 import { HttpUtilsService, LayoutUtilsService, TypesUtilsService } from './core/_base/crud';
 // Config
@@ -118,7 +118,6 @@ export function hljsLanguages(): HighlightLanguage[] {
 	],
 	exports: [],
 	providers: [
-		AuthService,
 		LayoutConfigService,
 		LayoutRefService,
 		MenuConfigService,

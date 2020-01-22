@@ -5,7 +5,7 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 // RxJS
 import { Observable } from 'rxjs';
 // Auth
-import { AuthDataContext } from '../../../../auth';
+
 // ECommerce
 import { ECommerceDataContext } from '../../../../e-commerce';
 // Models
@@ -25,9 +25,7 @@ export class FakeApiService implements InMemoryDbService {
 		// tslint:disable-next-line:class-name
 		const db = {
 			// auth module
-			users: AuthDataContext.users,
-			roles: AuthDataContext.roles,
-			permissions: AuthDataContext.permissions,
+
 
 			// e-commerce
 			// customers
