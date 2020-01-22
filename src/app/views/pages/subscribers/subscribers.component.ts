@@ -48,8 +48,7 @@ export class SubscribersComponent implements OnInit {
     .subscribe(
       (res:string)=>{
         console.log(res)
-        window.open(res, "_blank");
-        // window.location.href = res;
+        window.open(this.URL+res, "_blank");
       }
 
     )
