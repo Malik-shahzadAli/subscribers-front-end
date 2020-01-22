@@ -89,7 +89,7 @@ export class FormsComponent  {
 }
 @Component({
 	selector: 'dialog-data-example-dialog',
-	templateUrl: 'dialog-component.html',
+	templateUrl: 'dailoge.component.html',
   })
   export class DialogDataExampleDialog {
 	constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
