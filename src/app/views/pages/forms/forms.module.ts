@@ -5,6 +5,7 @@ import { FormsComponent } from './forms.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MaterialModule } from './../material/material.module'
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MaterialModule
   ],
   exports: [FormsComponent]
 })
