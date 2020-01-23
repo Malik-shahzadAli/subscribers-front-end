@@ -12,5 +12,11 @@ img {
 	border-radius: 50%;
   }
   .active{
-	color: green;
+	background-color: #1DC9B7;
+	border: none;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	cursor: pointer;
   }
