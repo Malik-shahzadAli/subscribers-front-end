@@ -86,7 +86,7 @@ export class AppComponent implements OnInit, OnDestroy {
 		  }
 		  else{
 			  console.log('In else condition ')
-		     window.location.assign('https://account.manytools.io/')
+		    //  window.location.assign('https://account.manytools.io/')
 		  }
 	  }
 	  else{
