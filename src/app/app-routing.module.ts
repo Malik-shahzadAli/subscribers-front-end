@@ -16,11 +16,11 @@ const routes: Routes = [
 		children: [
 			{
 				path: 'allFiles',
-				loadChildren: () => import('app/views/pages/dashboard/dashboard.module').then(m => m.DashboardModule)
+				loadChildren: () => import('app/views/pages/all-files/all-files.module').then(m => m.AllFilesModule)
 			},
 			{
 				path:'uploadFile',
-				loadChildren:()=> import('app/views/pages/try/try.module').then(m =>m.TryModule)
+				loadChildren:()=> import('app/views/pages/upload-file/upload-file.module').then(m =>m.TryModule)
 			},
 			{
 				path:'subscribers',

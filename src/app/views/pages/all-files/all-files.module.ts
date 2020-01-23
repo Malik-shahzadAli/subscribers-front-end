@@ -1,11 +1,11 @@
 // import { NgModule } from '@angular/core';
 // import { CommonModule } from '@angular/common';
-// import { DashboardComponent } from './dashboard.component';
+// import { AllFilesComponent } from './dashboard.component';
 
 
 
 // @NgModule({
-//   declarations: [DashboardComponent],
+//   declarations: [AllFilesComponent],
 //   imports: [
 //     CommonModule
 //   ]
@@ -18,7 +18,7 @@ import { CommonModule } from '@angular/common';
 // Core Module
 import { CoreModule } from '../../../core/core.module';
 import { PartialsModule } from '../../partials/partials.module';
-import { DashboardComponent } from './dashboard.component';
+import { AllFilesComponent } from './all-files.component';
 
 @NgModule({
 	imports: [
@@ -28,14 +28,14 @@ import { DashboardComponent } from './dashboard.component';
 		RouterModule.forChild([
 			{
 				path: '',
-				component: DashboardComponent
+				component: AllFilesComponent
 			},
 		]),
 	],
 	providers: [],
 	declarations: [
-		DashboardComponent,
+		AllFilesComponent,
 	]
 })
-export class DashboardModule {
+export class AllFilesModule {
 }
