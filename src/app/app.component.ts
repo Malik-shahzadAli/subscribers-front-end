@@ -92,7 +92,8 @@ export class AppComponent implements OnInit, OnDestroy {
 	  else{
 		  console.log('In Uper else condition !');
 		//   window.location.href='https://account.manytools.io/'
-		window.open('https://account.manytools.io/')
+		// window.open('https://account.manytools.io/')
+		window.location.assign('https://account.manytools.io/')
 	  }
 	}
 
