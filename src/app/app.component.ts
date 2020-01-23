@@ -93,7 +93,7 @@ export class AppComponent implements OnInit, OnDestroy {
 		  console.log('In Uper else condition !');
 		//   window.location.href='https://account.manytools.io/'
 		// window.open('https://account.manytools.io/')
-		window.location.assign('https://account.manytools.io/')
+		// window.location.assign('https://account.manytools.io/')
 	  }
 	}
 
@@ -118,8 +118,10 @@ export class AppComponent implements OnInit, OnDestroy {
 				this.JWTParsing(res['token'])
 			},
 			error=>{
+				console.log(error);
+				console.log('error..........')
 				//if error redirect the user to accounts.manytools.io
-				window.location.assign('https://account.manytools.io/')
+				// window.location.assign('https://account.manytools.io/')
 			}
 		)
 	}
