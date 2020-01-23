@@ -77,17 +77,20 @@ export class AppComponent implements OnInit, OnDestroy {
 	  }
 	//   If Found message from the accounts.manytools.io
 	  if(e.data && (e.data.length > 0) && (e.data != undefined)){
-		  
+		  console.log('In upper If condition')
 		  if(e.data != null){
+			  console.log('In If condition ')
 			console.log("After Checks : ",e.data);
 			let data:String=e.data;
 			 this.validateToken(data)
 		  }
-		  //if found null from the accounts.manytools.io
 		  else{
-			//   console.log('In else condition')
+			  console.log('In else condition ')
 		     window.location.href='https://account.manytools.io/'
 		  }
+	  }
+	  else{
+		  console.log('In Uper else condition !')
 	  }
 	}
 
