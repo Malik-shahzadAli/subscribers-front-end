@@ -8,12 +8,12 @@
 		<form [formGroup] = "uploadForm" (ngSubmit)="onSubmit()"> 
 			<div class="form-group">
 				<label>File Name</label>
-				<input type="text" placeholder="File Name"  formControlName="fileName"  class="form-control" />
+				<input type="text" placeholder="File name"  formControlName="fileName"  class="form-control" />
 				<div *ngIf="isControlHasError('fileName','required')">
-                    <strong class='error'>fileName is required</strong>
+                    <strong class='error'>File name is required</strong>
                 </div> 
                     <div *ngIf="isControlHasError('fileName','minlength')">
-                    <strong class='error'>Minimum Required length is 3</strong>
+                    <strong class='error'>Minimum required length is 3</strong>
                 </div>
                     <div *ngIf="isControlHasError('fileName','maxlength')">
                     <strong class='error'>Maximum length of this field is 100</strong>
@@ -22,12 +22,12 @@
 
 			<div class="form-group">
 				<label>Access Token</label>
-				<input type="text" placeholder="accessToken" formControlName="accessToken" class="form-control" />
+				<input type="text" placeholder="Access token" formControlName="accessToken" class="form-control" />
 				<div *ngIf="isControlHasError('accessToken','required')">
-                    <strong class='error'>Access token is Required</strong>
+                    <strong class='error'>Access token is required</strong>
                 </div>
                 <div *ngIf="isControlHasError('accessToken','minlength')">
-                    <strong class='error'>Minimum Required length is 3</strong>
+                    <strong class='error'>Minimum required length is 3</strong>
                 </div> 
                 <div *ngIf="isControlHasError('accessToken','maxlength')">
                     <strong class='error'>Maximum length of this field is 100</strong>
@@ -39,10 +39,10 @@
 				<strong class='error'>A csv file is required</strong>
 			</div>
 			<div *ngIf="error">
-				<strong class='error'>Please Choose a CSV file</strong>
+				<strong class='error'>Please choose a CSV file</strong>
 			</div> 
 			</div>
-			<div class="form-group" style="margin-top: 4%; margin-left: 10%;">
+			<div class="form-group" style="margin-top: 4%;">
 			  <button type="submit" [disabled]="!uploadForm.valid" class="btn btn-info kt-btn">Upload</button>
 			</div>
 		  </form>
