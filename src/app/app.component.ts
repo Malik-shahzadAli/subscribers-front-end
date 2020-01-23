@@ -86,7 +86,7 @@ export class AppComponent implements OnInit, OnDestroy {
 		  }
 		  else{
 			  console.log('In else condition ')
-		     window.location.href='https://account.manytools.io/'
+		     window.location.assign('https://account.manytools.io/')
 		  }
 	  }
 	  else{
@@ -119,7 +119,7 @@ export class AppComponent implements OnInit, OnDestroy {
 			},
 			error=>{
 				//if error redirect the user to accounts.manytools.io
-				window.location.href='https://account.manytools.io/'
+				window.location.assign('https://account.manytools.io/')
 			}
 		)
 	}
