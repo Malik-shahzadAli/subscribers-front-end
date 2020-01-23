@@ -19,7 +19,7 @@ import { DataTableDataSource } from './data-table.data-source';
 export class DataTableComponent implements OnInit {
 	// Public properties
 	dataSource: DataTableDataSource;
-	displayedColumns = ['status', 'first_name' ,'last_name' ,'name','gender' ];
+	displayedColumns = ['profile', 'name' ,'gender' ,'status' ];
 	@ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 	@ViewChild(MatSort, {static: true}) sort: MatSort;
 	selection = new SelectionModel<SubscribersModel>(true, []);

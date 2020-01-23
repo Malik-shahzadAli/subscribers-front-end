@@ -4,25 +4,27 @@
 	<!-- Table with selection -->
 	<!-- https://run.stackblitz.com/api/angular/v1?file=app%2Ftable-selection-example.ts -->
 	<table mat-table class="lmat-elevation-z8" [dataSource]="dataSource" matSort matSortActive="id" matSortDirection="asc" matSortDisableClear>
-		<ng-container matColumnDef="status">
-			<th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
-			<td mat-cell *matCellDef="let product" class="mat-column-vinCode">{{product.status}}</td>
+	
+		<ng-container matColumnDef="profile">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header>Profile</th>
+			<td mat-cell *matCellDef="let product" class="mat-column-vinCode"><img [src]="product.profile_pic" /></td>
 		</ng-container>
-		<ng-container matColumnDef="first_name">
-			<th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
-			<td mat-cell *matCellDef="let product" class="mat-column-vinCode">{{product.first_name}}</td>
-		</ng-container>
-		<ng-container matColumnDef="last_name">
+		<!-- <ng-container matColumnDef="last_name">
 			<th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
 			<td mat-cell *matCellDef="let product" class="mat-column-vinCode">{{product.last_name}}</td>
-		</ng-container>
+		</ng-container> -->
 		<ng-container matColumnDef="name">
-			<th mat-header-cell *matHeaderCellDef mat-sort-header>Full Name</th>
+			<th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
 			<td mat-cell *matCellDef="let product" class="mat-column-vinCode">{{product.name}}</td>
 		</ng-container>
 		<ng-container matColumnDef="gender">
 			<th mat-header-cell *matHeaderCellDef mat-sort-header>Gender</th>
 			<td mat-cell *matCellDef="let product" class="mat-column-vinCode">{{product.gender}}</td>
+		</ng-container>
+		<ng-container matColumnDef="status">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+			<!-- <td mat-cell *matCellDef="let product" class="mat-column-vinCode">{{product.status}}</td> -->
+			<span class="kt-badge kt-badge--inline kt-badge--pill kt-badge--{{ getItemCssClassByStatus(product.cStatus) }} kt-badge--wide">{{ getItemStatusString(product.status) }}</span>
 		</ng-container>
 <!-- gender -->
 		<!-- <ng-container matColumnDef="cManufacture">

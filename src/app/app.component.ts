@@ -41,6 +41,7 @@ export class AppComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnInit(): void {
+		// this.loadGUI()
 		 let token=localStorage.getItem('token');
 		 console.log(token)
 		 if(token){
