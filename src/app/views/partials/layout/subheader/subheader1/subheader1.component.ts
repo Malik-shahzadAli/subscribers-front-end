@@ -69,4 +69,12 @@ export class Subheader1Component implements OnInit, OnDestroy, AfterViewInit {
 	ngOnDestroy(): void {
 		this.subscriptions.forEach(sb => sb.unsubscribe());
 	}
+
+
+	// on logout
+	logout() {
+		localStorage.clear();
+		window.location.assign('https://account.manytools.io/logout/');
+
+	}
 }

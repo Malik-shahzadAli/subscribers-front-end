@@ -12,8 +12,9 @@ import { PopupWindowComponent } from './popup-window/popup-window.component';
 // import {MaterialTableComponent}
 
 import {MatDialogModule} from '@angular/material/dialog';
+import { LogoutComponent } from './logout/logout.component';
 @NgModule({
-	declarations: [PopupWindowComponent],
+	declarations: [PopupWindowComponent, LogoutComponent],
 	exports: [],
 	imports: [
 		CommonModule,

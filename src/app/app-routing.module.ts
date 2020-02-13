@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 // Components
 import { BaseComponent } from './views/theme/base/base.component';
 import { ErrorPageComponent } from './views/theme/content/error-page/error-page.component';
+import { LogoutComponent } from './views/pages/logout/logout.component';
 // Auth
 
 
@@ -29,6 +30,10 @@ const routes: Routes = [
 			{
 				path:'updateFile',
 				loadChildren:()=> import('app/views/pages/update-file/update-file.module').then(m=>m.UpdateFileModule)
+			},
+			{
+				path:'logout',
+				component: LogoutComponent
 			},
 			{
 				path: 'error/403',
